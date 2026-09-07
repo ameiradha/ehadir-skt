@@ -1,0 +1,8 @@
+{
+  "name": "e-Hadir Asrama SKT",
+  "description": "Sistem kehadiran murid asrama SKT dengan sokongan muat naik XLSX, laporan bulanan, dan visualisasi data.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

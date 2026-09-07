@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "student": {
+      "title": "Student",
+      "description": "Record of a student in the hostel",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the student" },
+        "class": { "type": "string", "description": "Class/Form of the student" },
+        "active": { "type": "boolean", "description": "Whether the student is currently active in hostel" }
+      },
+      "required": ["name", "class"]
+    },
+    "attendance": {
+      "title": "Attendance",
+      "description": "Daily attendance record for a student",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "description": "Reference to the student ID" },
+        "date": { "type": "string", "format": "date", "description": "Date of attendance" },
+        "status": { "type": "string", "enum": ["Hadir", "Tidak Hadir", "Cuti Sekolah", "Cuti Umum", "Cuti Peristiwa"] },
+        "markedBy": { "type": "string", "description": "UID of the warden who marked attendance" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "date", "status", "markedBy", "timestamp"]
+    },
+    "settings": {
+      "title": "System Settings",
+      "description": "Configuration for the system branding",
+      "type": "object",
+      "properties": {
+        "systemName": { "type": "string" },
+        "logoUrl": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/students/{studentId}": {
+      "schema": "student",
+      "description": "Stored student profiles"
+    },
+    "/attendance/{attendanceId}": {
+      "schema": "attendance",
+      "description": "Daily attendance logs"
+    },
+    "/settings/config": {
+      "schema": "settings",
+      "description": "Global system settings"
+    }
+  }
+}
